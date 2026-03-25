@@ -3,5 +3,6 @@ This Spring Boot application uses both MVC and REST controllers. Thymeleaf templ
 2. The action is routed to the appropriate Thymeleaf or REST controller.
 3. The controller calls the service layer
 4. Service layer connects to repositories and get the data
-5. Service layer uses business logic to respond with output
-6. Respoitories accesses to either MongoDB or MySQLDB
+5. Respoitories accesses to either MongoDB or MySQLDB
+6. Once retrived database data are mapped on models (model binding)
+7. Models are used in app
