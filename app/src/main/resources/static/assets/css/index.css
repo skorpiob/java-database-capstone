@@ -51,3 +51,80 @@
 * Use the same base green background (`#015c5d`) as the default button.
 * On hover, darken the background to deep teal (`#003e3e`) for visual feedback.
  */
+
+/* Global Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; font-family: Arial, sans-serif; }
+
+/* Base */
+html,
+body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Layout Wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Heading */
+h2 {
+  font-size: 48px;
+  margin-bottom: 50px;
+  color: #003e3e;
+  font-weight: bold;
+  font-family: 'Alegreya', 'Roboto', sans-serif;
+}
+
+/* Main Section */
+.main-content {
+  flex-grow: 1;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background-image: url("../assets/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Buttons */
+button {
+  background-color: #015c5d;
+  color: white;
+  border: none;
+  border-radius: 12px;
+
+  padding: 10px 20px;
+  width: 200px;
+
+  margin-top: 10px;
+
+  cursor: pointer;
+  font-size: 16px;
+
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #A62B1F;
+}
+
+/* Dashboard Buttons */
+.dashboard-btn {
+  background-color: #015c5d;
+}
+
+.dashboard-btn:hover {
+  background-color: #003e3e;
+}
