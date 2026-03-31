@@ -107,3 +107,73 @@ with search, filter, and modal functionality.
 
  -->
 
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/png" th:href="@{/assets/images/logo/logo.png}" />
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/adminDashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/js/render.js}" defer></script>
+    <script th:src="@{/js/util.js}" defer></script>
+    <script th:src="@{/js/header.js}" defer></script>
+    <script th:src="@{/js/footer.js}" defer></script>
+
+</head>
+
+<body onload="renderContent()">
+
+<div class="container">
+    <div class="wrapper">
+
+        <div id="header"></div>
+
+        <main class="main-content">
+
+            <input type="text" id="searchBar" placeholder="Search doctors...">
+
+            <div class="filters">
+                <select id="timeFilter">
+                    <option value="">Select Time</option>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+
+                <select id="specialtyFilter">
+                    <option value="">Select Specialty</option>
+                    <option value="Cardiologist">Cardiologist</option>
+                    <option value="Dentist">Dentist</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                    <option value="Neurologist">Neurologist</option>
+                    <option value="Orthopedic">Orthopedic</option>
+                </select>
+            </div>
+
+            <div id="content"></div>
+
+        </main>
+
+        <div id="footer"></div>
+
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<script type="module" src="../../static/js/adminDashboard.js" defer></script>
+<script type="module" src="../../static/js/doctorCard.js" defer></script>
+
+</body>
+</html>

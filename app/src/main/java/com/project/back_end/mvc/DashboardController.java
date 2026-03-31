@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import com.project.back_end.services.Service;
+import com.project.back_end.services.AppService;
 
 @Controller
 public class DashboardController {
@@ -18,7 +18,7 @@ public class DashboardController {
     // 2. Autowire the Shared Service:
 //    - Inject the common `Service` class, which provides the token validation logic used to authorize access to dashboards.
     @Autowired
-    private Service service;
+    private AppService service;
 
 
     // 3. Define the `adminDashboard` Method:
@@ -30,9 +30,7 @@ public class DashboardController {
     @GetMapping("/adminDashboard/{token}")
     public String adminDashboard(@PathVariable String token) {
 
-        boolean valid = service.validateToken(token, "admin");
-
-        if (valid) {
+        if (service.validateToken(token, "admin") == null) {
             return "admin/adminDashboard";
         } else {
             return "redirect:/";
@@ -49,9 +47,7 @@ public class DashboardController {
     @GetMapping("/doctorDashboard/{token}")
     public String doctorDashboard(@PathVariable String token) {
 
-        boolean valid = service.validateToken(token, "doctor");
-
-        if (valid) {
+        if (service.validateToken(token, "doctor")== null) {
             return "doctor/doctorDashboard";
         } else {
             return "redirect:/";

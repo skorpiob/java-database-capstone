@@ -1,12 +1,17 @@
 package com.project.back_end.controllers;
 
 import com.project.back_end.models.Appointment;
+import com.project.back_end.models.Doctor;
 import com.project.back_end.services.AppointmentService;
 import com.project.back_end.services.AppService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.project.back_end.repo.AppointmentRepository;
+import com.project.back_end.repo.DoctorRepository;
 
+
+import java.time.LocalDate;
 import java.util.Map;
 
 @RestController
@@ -25,10 +30,15 @@ public class AppointmentController {
 //    - Inject the general `Service` class, which provides shared functionality like token validation and appointment checks.
     private final AppointmentService appointmentService;
     private final AppService service;
+    private final AppointmentRepository appointmentRepository;
+    private final DoctorRepository doctorRepository;
 
-    public AppointmentController(AppointmentService appointmentService, AppService service) {
+
+    public AppointmentController(AppointmentService appointmentService, AppService service, AppointmentRepository appointmentRepository, DoctorRepository doctorRepository) {
         this.appointmentService = appointmentService;
         this.service = service;
+        this.appointmentRepository = appointmentRepository;
+        this.doctorRepository = doctorRepository;
     }
 
 
@@ -39,7 +49,7 @@ public class AppointmentController {
 //    - If the token is valid, returns appointments for the given patient on the specified date.
 //    - If the token is invalid or expired, responds with the appropriate message and status code.
     @GetMapping("/{date}/{patientName}/{token}")
-    public ResponseEntity<?> getAppointments(@PathVariable String date,
+    public ResponseEntity<?> getAppointments(@PathVariable LocalDate date,
                                              @PathVariable String patientName,
                                              @PathVariable String token) {
 
@@ -47,8 +57,11 @@ public class AppointmentController {
         if (tokenValidation != null) {
             return tokenValidation;
         }
+        Doctor doctor = doctorRepository.findByEmail(token);
+        Long doctorId = doctor.getId();
 
-        return ResponseEntity.ok(appointmentService.getAppointments(date, patientName));
+//wywolanie getAppointments(Long doctorId, LocalDate date, String patientName)
+        return ResponseEntity.ok(appointmentService.getAppointments(doctorId, date, patientName));
     }
 
 
@@ -100,7 +113,13 @@ public class AppointmentController {
             return tokenValidation;
         }
 
-        return ResponseEntity.ok(appointmentService.updateAppointment(appointment));
+        return ResponseEntity.ok(
+                appointmentService.updateAppointment(
+                        appointment.getId(),
+                        appointment.getPatient().getId(),
+                        appointment.getAppointmentTime()
+                )
+        );
     }
 
 
@@ -118,7 +137,11 @@ public class AppointmentController {
             return tokenValidation;
         }
 
-        return ResponseEntity.ok(appointmentService.cancelAppointment(id));
+        Appointment appointment = appointmentRepository.findById(id).orElse(null);
+        long patientId = appointment.getPatient().getId();
+
+        // cancelAppointment input - Long appointmentId, Long patientId
+        return ResponseEntity.ok(appointmentService.cancelAppointment(id, patientId));
     }
 
 }
