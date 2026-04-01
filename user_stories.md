@@ -19,12 +19,12 @@ _As a doctor, I want View the patient details for upcoming appointments, so that
 
 **Acceptance Criteria:**
 
-patient detail available from appointment
-details should contain name, surname, disease
-history of appointments and notes available on the screen
-Priority: high
-Story Points: 12
-Notes:
+1. patient detail available from appointment
+2. details should contain name, surname, disease
+3. history of appointments and notes available on the screen
+**Priority:** high
+**Story Points:** 12
+**Notes:**
 
 [Additional information or edge cases]
 
@@ -33,12 +33,12 @@ _As a doctor, I want Mark your unavailability, so that I can inform patients onl
 
 **Acceptance Criteria:**
 
-notification on succesfull marking unavailability
-unavailability showed with pink color
-unavailability could be for at least 30 minutes
-Priority: low
-Story Points: 5
-Notes:
+1. notification on succesfull marking unavailability
+2. unavailability showed with pink color
+3. unavailability could be for at least 30 minutes
+**Priority:** low
+**Story Points:** 5
+**Notes:**
 
 [Additional information or edge cases]
 
@@ -47,12 +47,13 @@ _As a doctor, I want View my appointment calendar, so that I can stay organized
 
 **Acceptance Criteria:**
 
-calendar of current month with appointment visible
-button for managing appointment possible
-calendar available only after logging in
-Priority: low
-Story Points: 5
-Notes:
+1. calendar of current month with appointment visible
+2. button for managing appointment possible
+3. calendar available only after logging in
+
+**Priority:** low
+**Story Points:** 5
+**Notes:**
 
 [Additional information or edge cases]
 
@@ -102,13 +103,14 @@ Notes:
 **Title:**
 _As a patient, I want Log out of the portal , so that I to secure my account
 
-Acceptance Criteria:
+**Acceptance Criteria:**
 
-successful log out notification
-logging session should be terminated
-Priority: medium
-Story Points: 12
-Notes:
+1. successful log out notification
+2. logging session should be terminated
+
+**Priority:** medium
+**Story Points:** 12
+**Notes:**
 
 [Additional information or edge cases]
 
@@ -171,20 +173,20 @@ Notes:
 **Title:**
 _As an admin , I want to Delete doctor's profile from the portal, so persons who should not have access any more cant logon
 
-Acceptance Criteria:
+**Acceptance Criteria:**
 
-notification on successful deletion
-GDPR compliant in terms of keeping related data
-Priority: Medium
-Story Points: 8
-Notes:
+1. notification on successful deletion
+2. GDPR compliant in terms of keeping related data
+**Priority:** medium
+**Story Points:** 8
+**Notes:**
 
 [Additional information or edge cases]
 
 **Title:**
 _As an admin , I want Add doctors to the portal, so that they can use it
 
-Acceptance Criteria:
+**Acceptance Criteria:**
 
 notification on successful adding
 Secure email to added doctors with credentials
